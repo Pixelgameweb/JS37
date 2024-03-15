@@ -1,16 +1,10 @@
-const parent = document.querySelector("#parent");
-const tabs = parent.querySelectorAll(".tab");
-
-parent.addEventListener("click", (e) => {
-  const clickedElement = e.target;
-  // если кликнули на ссылку, то предотвращаем переход по ссылке
-  if (clickedElement.tagName === "A") {
-    e.preventDefault();
-    // удаляем у всех табов класс active
-    tabs.forEach((tab) => tab.classList.remove("active"));
-    // находим ближайшего родителя с классом tab
-    const tab = clickedElement.closest(".tab");
-    // добавляем класс active найденному табу
-    tab.classList.add("active");
+document.getElementById('parent').addEventListener('click', function(event) {
+  var clickedElement = event.target;
+  var tabs = document.querySelectorAll('.tab');
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].classList.remove('active');
   }
+  var closestTab = clickedElement.closest('.tab');
+  closestTab.classList.add('active');
 });
+// Ну я вообщем все так написал что когда мы кликаем на элементс id парент мы обрабатываем событие потом мы определяем где именно было сделанно событиепотом получаем табы (точнее все блоки с классом таб)Удаляем active нходим бижайшего с классом табИ добавляем актив к табу который нашли
